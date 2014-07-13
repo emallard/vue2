@@ -1,0 +1,7 @@
+{
+  "devDependencies": {
+    "grunt-cli": "",
+    "grunt-ts" : "",
+    "typescript" : ""
+  }
+}

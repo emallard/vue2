@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <link rel="stylesheet" href="css/app.css" />
+
+    <script type="text/javascript" src="libs/jquery-1.10.2.min.js"></script>
+
+    <script type="text/javascript" src="libs/jquery-ui/js/jquery-ui-1.10.3.custom.min.js"></script>
+    <script type="text/javascript" src="libs/jquery-ui/js/jquery.mousewheel.min.js"></script>
+    <link rel="stylesheet" href="libs/jquery-ui/css/smoothness/jquery-ui-1.10.3.custom.min.css" />
+
+    <script type="text/javascript" src="libs/knockout-3.0.0.js"></script>
+
+    <script type="text/javascript" src="out/example.js"></script>
+
+    <script type="text/javascript" src="../out/vue2.js"></script>
+
+    <script type="text/javascript">
+        function applicationStart()
+        {
+            ko.applyBindings(new vue2.appViewModel());
+        }
+
+        function widthPlus()
+        {
+            var elt = $("#theview2");
+            elt.width(elt.width() + 100);
+        }
+
+        function widthMinus()
+        {
+            var elt = $("#theview2");
+            elt.width(elt.width() - 100);
+        }
+
+    </script>
+
+</head>
+
+
+
+<body onload="applicationStart();">
+
+    <div id="theview2" class="view2" data-bind="vue2View:rectangle"
+            style="width:500px;height:500px;">
+
+
+        <div class="view2fill" data-bind="vue2MouseMove: onMouseMove"></div>
+
+        <svg style="position:absolute;top:0px;left:0px;width:100%;height:100%;pointer-events:none;">
+            <path fill="none" stroke="#888888" data-bind="vue2Grid: {divSize:0.001} "
+                  style="pointer-events:none;"></path>
+        </svg>
+
+
+        <svg style="position:absolute;top:0px;left:0px;width:100%;height:100%;pointer-events:none;"  data-bind="foreach:pointsArray">
+            <path fill="none" stroke="#888888" data-bind="vue2Points:$data"
+                    style="pointer-events:none;"></path>
+        </svg>
+
+
+        <div class="handle" data-bind="vue2Center:pos1"></div>
+        <div class="handle" data-bind="vue2Center:pos2, vue2Options: {draggable:true}"></div>
+        <div class="handle" data-bind="vue2Center:pos3, vue2Options: {draggable:true, windowOffset : {top:-10, left:10}}"></div>
+        <div class="handle" data-bind="vue2Center:pos4, vue2Options: {draggable:true, axis : {top:1, left:1}}"></div>
+        <div class="handle" data-bind="vue2Center:pos5, vue2Options: {draggable:true}, vue2Constraint: constraintPos5"></div>
+
+        <!--
+        <svg style="position:absolute;top:0px;left:0px;width:100%;height:100%;pointer-events:none;">
+            <path fill="none" stroke="#888888" data-bind="vue2Points:points"></path>
+            <path fill="none" stroke="#888888" data-bind="vue2Grid: {divSize:0.001} "
+                    style="pointer-events:none;"></path>
+        </svg>
+        -->
+        <img
+                style="position: absolute;top:0px;left:0px"
+                src="css/image/boldair.jpg"
+                data-bind="vue2Bounds:imageBounds">
+
+</div>
+
+</body>
+</html>

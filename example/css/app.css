@@ -1,0 +1,26 @@
+.view2{
+    position: relative;
+    background-color: #EEEEEE;
+    width:500px;
+    height:500px;
+}
+
+.handle{
+    position: absolute;
+    display: block;
+    width: 16px;
+    height: 16px;
+    background: url(image/handle.png) no-repeat;
+}
+
+.handle:hover{
+    background-image: url(image/handleHover.png);
+}
+
+.view2fill{
+    position: absolute;
+    display: block;
+    width: 100%;
+    height: 100%;
+    background-color: #d3d3d3;
+}
